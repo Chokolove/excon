@@ -1,4 +1,4 @@
-
+const path = require('path');
 module.exports = {
   mode: 'universal',
   /*
@@ -60,23 +60,10 @@ module.exports = {
     ** You can extend webpack config here
     */
    postcss: {
-      plugins: {
-        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
-        cssnano: {
-          preset: 'default',
-          discardComments: { removeAll: true },
-          zIndex: false
-        }
-      },
-      // Change the postcss-preset-env settings
-      preset: {
-        stage: 0, // enable all (experimental) polyfills
-        autoprefixer: {
-          cascade: false,
-          grid: true
-        }
-      }
-    },
+    plugins: {
+      tailwindcss: path.resolve(__dirname, './tailwind.config.js')
+    }
+  },
     extend (config, ctx) {
     }
   }
