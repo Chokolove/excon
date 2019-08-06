@@ -23,6 +23,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/css/tailwind.css',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -58,6 +59,24 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+   postcss: {
+      plugins: {
+        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
+        cssnano: {
+          preset: 'default',
+          discardComments: { removeAll: true },
+          zIndex: false
+        }
+      },
+      // Change the postcss-preset-env settings
+      preset: {
+        stage: 0, // enable all (experimental) polyfills
+        autoprefixer: {
+          cascade: false,
+          grid: true
+        }
+      }
+    },
     extend (config, ctx) {
     }
   }
